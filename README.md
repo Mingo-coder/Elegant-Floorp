@@ -11,3 +11,6 @@ I set the homepage to web.tabliss.io rather than the tabliss extension.
 
 ### Light Mode
 ![image](https://github.com/user-attachments/assets/4126c559-8b82-4ce0-b33f-e15327294572)
+
+The codes were modified from https://github.com/datguypiko/Firefox-Mod-Blur
+I made this for personal use but turned out quite useful so I hope it's ok with the original author of the theme.
