@@ -9,6 +9,7 @@ Go to the url bar and type about:flags
 so I set the flag: 
 
 browser.startup.homepage = https://web.tabliss.io/
+
 floorp.newtab.overrides.newtaburl = https://web.tabliss.io/
 
 Floorp needs a restart after this flag has been set to apply the effect.
