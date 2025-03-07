@@ -1,6 +1,7 @@
 # Elegant-Floorp 
 This is a simple userChrome.css file to make Floorp Browser elegant and more compact than compact mode.
 The theme I used is Floorp Fluential UI in Settings>Design>
+
 In the Customize Toolbar settings I dragged bookmark bar to the right side of url bar and enabled compact mode in Density tab located at the bottom
 
 I need to document all the other changes I made in about:flags eventually.
