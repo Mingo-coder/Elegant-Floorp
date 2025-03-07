@@ -1,4 +1,5 @@
 # Elegant-Floorp 
+feel free to open issue on any topic.
 This is a simple userChrome.css file to make Floorp Browser elegant and more compact than compact mode.
 The theme I used is Floorp Fluential UI in Settings>Design>Floorp Fluential UI (new)
 
@@ -15,7 +16,9 @@ floorp.newtab.overrides.newtaburl = https://web.tabliss.io/
 
 Floorp needs a restart after this flag has been set to apply the effect.
 
-I used WinAeroTweaker to change my fonts to Cascadia Code so I have no way to test if the font works so feel free to open issue on any topic.
+(read this if the UI font dont change)
+I've added Cascadia Code font in the userChrome.css.
+I used WinAeroTweaker to change my system fonts to Cascadia Code so I have no way to test if the font works. 
 I'm not sure if cascadia code comes bundled with windows os. You might need to download it if you want to change to that font from here https://github.com/microsoft/cascadia-code/releases/download/v2407.24/CascadiaCode-2407.24.zip
 
 ## Screenshots
