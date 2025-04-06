@@ -17,7 +17,7 @@ Quote: https://userChrome.org | https://github.com/topics/userchrome
 
 @charset "UTF-8";
 @-moz-document url(chrome://browser/content/browser.xhtml) {
-/* Please write your custom CSS under this line */
+/* Please write your custom CSS under this line*/
 }
 
 /* UI Font */
@@ -25,10 +25,17 @@ Quote: https://userChrome.org | https://github.com/topics/userchrome
   font-family: Cascadia Code, monospace;
 }
 
-/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/round_caption_buttons.css made available under Mozilla Public License v. 2.0
-See the above repository for updates as well as full license text. */
+#alltabs-button {
+    display: none !important;
+}
 
-/* Make window-control - aka caption buttons round following theme text color. */
+/* Remove Black Space on the Top Left corner */
+.titlebar-spacer{display: none !important;}
+
+/* Remove the gap between pinned tabs and unpinned tabs */
+.tabbrowser-tab:not([pinned]){ margin-inline-start: 0 !important }
+
+/* TitleBar */
 .titlebar-button{ --uc-caption-background: var(--uc-caption-color) }
 
 .titlebar-button { opacity: 0.6; --uc-caption-color: rgb(252,185,15) }
@@ -82,7 +89,6 @@ See the above repository for updates as well as full license text. */
   transition: opacity 250ms ease !important;
 }
 
-
 /* ROOT - VARS */
 *|*:root {
  --tab-min-height:      36px !important; /* adjust */
@@ -103,7 +109,7 @@ See the above repository for updates as well as full license text. */
 /* ----- New tab icon size (16-default). Not change the rest of calc --- */
 #tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button .toolbarbutton-icon {
-  margin-bottom: -7px !important;  
+  margin-bottom: none !important;  
 }
 
 
@@ -161,224 +167,3 @@ toolbar
   border-bottom: var(--firefoxcss-top-bar-border-bottom-size) solid
     var(--firefoxcss-top-bar-border-bottom-color) !important;
 }
-
-/*=====================================================================
-============== U R L   A U T O   H I D E   B U T T O N S ==============
-=====================================================================*/
-
-  #nav-bar:not([customizing="true"]):not(.searchButton)
-  > #nav-bar-customization-target
-  > #urlbar-container:not(:hover)
-  > #urlbar:not([focused])
-  > #urlbar-input-container
-  > #page-action-buttons
-  .urlbar-page-action {
-  opacity: 0;
-  transition-delay: 500ms;
-}
-
-/* #nav-bar:not([customizing="true"]):not(.searchButton)
-  > #nav-bar-customization-target
-  > #urlbar-container:not(:hover)
-  > #urlbar:not([focused])
-  > #urlbar-input-container
-  > #identity-box
-  #notification-popup-box:not([open])
-  .notification-anchor-icon {
-  opacity: 0;
-  transition-delay: 500ms;
-} */
-
-#nav-bar:not([customizing="true"]):not(.searchButton)
-  > #nav-bar-customization-target
-  > #urlbar-container:not(:hover)
-  > #urlbar:not([focused])
-  > #urlbar-input-container
-  > #identity-box
-  > #identity-permission-box:not([open]) {
-  opacity: 0;
-  transition-delay: 500ms;
-}
-
-#page-action-buttons .urlbar-page-action,
-#identity-permission-box,
-#notification-popup-box .notification-anchor-icon {
-  transition: opacity 0.2s ease;
-}
-
-#urlbar #identity-icon-box,
-#urlbar #identity-permission-box {
-  opacity: 0 !important;
-  margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
-  transition: margin-inline-start 100ms linear, opacity 200ms linear;
-}
-
-#urlbar #identity-box.notSecureText #identity-icon-box {
-  margin-inline-start: initial !important;
-  opacity: 1 !important;
-  color: #e36f6f !important;
-}
-
-#urlbar #identity-box.extensionPage #identity-icon-box {
-  margin-inline-start: initial !important;
-  opacity: 1 !important;
-}
-
-#identity-box:hover #identity-icon-box,
-#identity-box:hover #identity-permission-box,
-#identity-box #identity-permission-box[open="true"] {
-  opacity: 1 !important;
-  margin-inline-start: initial !important;
-}
-
-#urlbar-input-container .urlbar-input-box {
-  padding-inline-start: 2px !important;
-}
-
-#identity-box:hover ~ .urlbar-input-box > #urlbar-input {
-  mask-image: linear-gradient(to right, transparent, black 3ch) !important;
-}
-
-#page-action-buttons {
-  padding-inline-start: 8px;
-}
-
-#page-action-buttons .urlbar-page-action {
-  margin-inline-end: calc(-16px - 2 * var(--urlbar-icon-padding));
-  opacity: 0;
-  transition: margin-inline-end 100ms linear, opacity 200ms linear;
-}
-
-#page-action-buttons:hover > .urlbar-page-action,
-.urlbar-page-action[open],
-.urlbar-page-action[open] ~ .urlbar-page-action {
-  opacity: 1;
-  margin-inline-end: 0px !important;
-}
-
-#identity-box.chromeUI #identity-icon-box {
-  opacity: 1 !important;
-  margin-inline-start: initial;
-}
-
-#identity-box.chromeUI::after,
-#identity-box.chromeUI:hover::after {
-  opacity: 0 !important;
-}
-
-#page-action-buttons:not(:hover) #translations-button[translationsactive="true"]:not([open]) {
-  visibility:collapse !important;
-} 
-
-/* Create visual dots on both sides */
-/* left side identity-box dots modification */
-#identity-box::after,
-#page-action-buttons::before {
-  position: relative;
-  content: "•••";
-  pointer-events: none;
-  transition: opacity 100ms ease;
-  align-self: center;
-  font-size: 0.7em;
-}
-
-#identity-box::after,
-#page-action-buttons::before {
-  opacity: 0.2;
-}
-
-#identity-box::after {
-  transform: rotate(90deg);
-  left: 4px;
-}
-
-#page-action-buttons::before {
-  transform: rotate(-90deg);
-  right: 4px;
-}
-
-#identity-box:hover::after,
-#page-action-buttons:hover::before {
-  opacity: 0.2 !important;
-  transition: opacity 50ms ease;
-  pointer-events: none;
-}
-
-#identity-box[pageproxystate="invalid"]::after,
-#urlbar-input-container[pageproxystate="invalid"]
-  > #page-action-buttons::before {
-  opacity: 0 !important;
-  transition: opacity 50ms ease;
-}
-
-/* Linux changes for visual dots */
-@media (-moz-platform: linux) {
-  #identity-box::after,
-  #page-action-buttons::before {
-    content: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg fill="%23FFFFFF" width="11px" height="11px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M20.25 16c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25zM20.25 27c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25zM20.25 5c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25z"></path></svg>');
-    transform: none;
-    font-size: unset;
-  }
-
-  #page-action-buttons::before {
-    right: 2px;
-  }
-
-  #identity-box::after {
-    left: 2px;
-  }
-}
-
-/* Search button show on hover in URL bar. */
-/* #urlbar-container:not(:hover) #urlbar:not(.searchButton):not([focused])
-  > #urlbar-input-container > 
-  #identity-box[pageproxystate="invalid"] #identity-icon {
-    opacity: 0 !important; 
-  }
-  
-  #urlbar-container #urlbar:not(.searchButton)
-  > #urlbar-input-container > 
-  #identity-box[pageproxystate="invalid"] #identity-icon {
-    opacity: 1 !important; 
-    visibility: visible !important;
-    transition: opacity 0.2s ease;
-  } */
-
-#identity-box[pageproxystate="valid"].notSecureText > .identity-box-button,
-#identity-box[pageproxystate="valid"].extensionPage > .identity-box-button,
-#identity-box[pageproxystate="valid"].chromeUI > .identity-box-button,
-#urlbar-label-box,
-#urlbar-zoom-button {
-  background-color: var(--firefoxcss-item-bg-color) !important;
-}
-
-#urlbar-zoom-button:hover {
-  background-color: var(--firefoxcss-urlbar-zoom-button) !important;
-}
-
-#urlbar-input-container #identity-box > .identity-box-button,
-#tracking-protection-icon-container,
-#urlbar-go-button,
-#page-action-buttons .urlbar-page-action,
-#notification-popup-box {
-  border-radius: 8px !important;
-}
-
-  #tracking-protection-icon-container,
-  #identity-icon-box,
-  #identity-permission-box {
-    /* Initial hidden state for the elements */
-    /* persistsearchterms - is when you see globe in search */
-    #urlbar & {
-      opacity: 0 !important;
-      margin-inline-start: calc(-16px - 2 * var(--urlbar-icon-padding));
-      transition: margin-inline-start 150ms ease-in-out,
-        opacity 100ms ease-in-out;
-      transition-delay: 100ms;
-    }
-
-  #tracking-protection-icon-container:hover ~ .urlbar-input-box > #urlbar-input {
-     mask-image: linear-gradient(to right, transparent, black 3ch), linear-gradient(to left, transparent, black 3ch) !important;
-mask-composite: intersect;
-  }
-
